@@ -2,7 +2,7 @@ module Prpr
   module Action
     module MentionComment
       class Mention < Base
-        REGEXP = /@[a-zA-Z0-9_-]+/
+        REGEXP = /(^|\s)(@[a-zA-Z0-9\/_-]+)/
 
         def call
           if mention?
@@ -30,7 +30,7 @@ module Prpr
 
         def comment_body
           comment.body.gsub(REGEXP) { |old|
-            members[old] || old
+            members[$2] ? "#{$1}#{members[$2]}" : old
           }
         end
 
