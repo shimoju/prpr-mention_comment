@@ -35,7 +35,7 @@ module Prpr
         end
 
         def comment
-          event.comment
+          event.comment || event.issue
         end
 
         def from
