@@ -21,10 +21,10 @@ module Prpr
         end
 
         def body
-          <<-END
-#{comment_body}
+          <<~END
+            #{comment_body}
 
-#{comment.html_url}
+            <#{comment.html_url}|#{event.issue.title}>
           END
         end
 
